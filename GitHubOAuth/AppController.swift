@@ -93,8 +93,11 @@ class AppController: UIViewController {
 
         actingViewController = loadViewController(withID: id)
         self.addChildViewController(actingViewController)
-
-        addActing(viewController: actingViewController)
+        
+        containerView.addSubview(actingViewController.view)
+        actingViewController.view.frame = containerView.bounds
+        actingViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         actingViewController.view.alpha = 0
 
         UIView.animate(withDuration: 0.5, animations: {
